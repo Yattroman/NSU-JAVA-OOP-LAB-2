@@ -43,9 +43,9 @@ set JAVA_EXE=java.exe
 if "%ERRORLEVEL%" == "0" goto execute
 
 echo.
-echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+echo ERROR: JAVA_HOME is not set and no 'java' ru.nsu.yattroman.command could be found in your PATH.
 echo.
-echo Please set the JAVA_HOME variable in your environment to match the
+echo Please set the JAVA_HOME variable in your ru.nsu.yattroman.command.environment to match the
 echo location of your Java installation.
 
 goto fail
@@ -59,13 +59,13 @@ if exist "%JAVA_EXE%" goto execute
 echo.
 echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
 echo.
-echo Please set the JAVA_HOME variable in your environment to match the
+echo Please set the JAVA_HOME variable in your ru.nsu.yattroman.command.environment to match the
 echo location of your Java installation.
 
 goto fail
 
 :execute
-@rem Setup the command line
+@rem Setup the ru.nsu.yattroman.command line
 
 set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
 

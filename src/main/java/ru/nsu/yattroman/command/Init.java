@@ -1,6 +1,6 @@
 package ru.nsu.yattroman.command;
 
-public class Init extends GodCommand {
+public class Init extends FundamentalCommand {
     private int width;
     private int height;
 

@@ -1,6 +1,10 @@
 package ru.nsu.yattroman.environment;
 
 public class Robot {
-    private int x;
-    private int y;
+    private Coordinates currentCoordinates;
+
+    public static class Coordinates{
+        private int x;
+        private int y;
+    }
 }

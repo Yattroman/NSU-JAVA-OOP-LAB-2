@@ -1,5 +1,0 @@
-INIT ru.nsu.yattroman.command.Init
-DRAW ru.nsu.yattroman.command.Draw
-WARD ru.nsu.yattroman.command.Ward
-MOVE ru.nsu.yattroman.command.Move
-TELEPORT ru.nsu.yattroman.command.Teleport

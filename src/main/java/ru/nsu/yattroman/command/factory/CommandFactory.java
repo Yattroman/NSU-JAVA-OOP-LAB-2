@@ -10,9 +10,9 @@ public class CommandFactory {
     private static final String COMMAND_PROPERTY_FILE = "D:\\NSU\\JAVA_NSU_LABS\\Lab2\\src\\main\\resources\\config.properties";
     protected Map<String, Class<? extends Command>> commandClasses = new HashMap<>();
     protected Map<String, Command> commandTypes = new HashMap<>();
-
-    static CommandFactory instance;
     protected Properties classProperties;
+    
+    private static CommandFactory instance;
 
     public CommandFactory(){
         try {
@@ -21,7 +21,6 @@ public class CommandFactory {
             e.printStackTrace();
         }
     }
-
     public static CommandFactory getCommandFactory() {
         if (instance == null) {
             instance = new CommandFactory();
@@ -29,7 +28,7 @@ public class CommandFactory {
         return instance;
     }
 
-    private Command newInstance(String commandName, Class<? extends Command>[] parametrTypes, Object[] params) {
+    private Command newInstance(String commandName, Class<? extends Command>[] parameterTypes, Object[] parameters) {
         Command command = null;
 
         try {
@@ -37,8 +36,8 @@ public class CommandFactory {
             if(commandClass == null){
                 throw new RuntimeException("No class registered with name " + commandName);
             }
-            Constructor<? extends Command> commandConstr = commandClass.getConstructor();
-            command = commandConstr.newInstance();
+            Constructor<? extends Command> commandConstr = commandClass.getConstructor(parameterTypes);
+            command = commandConstr.newInstance(parameters);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -49,11 +48,11 @@ public class CommandFactory {
         return newInstance(commandName, new Class[] {}, new Object[] {});
     }
 
-    public Command getInstance(String commandName, Class<? extends Command>[] parametrTypes, Object[] params){
+    public Command getInstance(String commandName, Class<? extends Command>[] parameterTypes, Object[] parameters){
         Command command = commandTypes.get(commandName);
 
         if(command == null){
-            command = newInstance(commandName);
+            command = newInstance(commandName, parameterTypes, parameters);
             commandTypes.put(commandName, command);
         }
 

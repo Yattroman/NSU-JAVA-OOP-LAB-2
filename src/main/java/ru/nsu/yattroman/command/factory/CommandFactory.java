@@ -28,7 +28,7 @@ public class CommandFactory {
         return instance;
     }
 
-    private Command newInstance(String commandName, Class<? extends Command>[] parameterTypes, Object[] parameters) {
+    private Command newInstance(String commandName) {
         Command command = null;
 
         try {
@@ -36,30 +36,24 @@ public class CommandFactory {
             if(commandClass == null){
                 throw new RuntimeException("No class registered with name " + commandName);
             }
-            Constructor<? extends Command> commandConstr = commandClass.getConstructor(parameterTypes);
-            command = commandConstr.newInstance(parameters);
+            Constructor<? extends Command> commandConstr = commandClass.getConstructor();
+            command = commandConstr.newInstance();
         } catch (Exception e){
             e.printStackTrace();
         }
 
         return command;
     }
-    private Command newInstance(String commandName){
-        return newInstance(commandName, new Class[] {}, new Object[] {});
-    }
 
-    public Command getInstance(String commandName, Class<? extends Command>[] parameterTypes, Object[] parameters){
+    public Command getInstance(String commandName){
         Command command = commandTypes.get(commandName);
 
         if(command == null){
-            command = newInstance(commandName, parameterTypes, parameters);
+            command = newInstance(commandName);
             commandTypes.put(commandName, command);
         }
 
         return command;
-    }
-    public Command getInstance(String commandName) {
-        return getInstance(commandName, new Class[] {  }, new Object[] {  });
     }
 
     public void initCommandFactoryFromSysProp() throws Exception{

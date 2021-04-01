@@ -1,10 +1,13 @@
 package ru.nsu.yattroman.command;
 
 import lombok.EqualsAndHashCode;
+import ru.nsu.yattroman.GameMaster;
 import ru.nsu.yattroman.checker.ArgsChecker;
 import ru.nsu.yattroman.checker.CoordinatesChecker;
+import ru.nsu.yattroman.checker.DirectionChecker;
 import ru.nsu.yattroman.checker.MapParametersChecker;
 import ru.nsu.yattroman.command.factory.CommandFactory;
+import ru.nsu.yattroman.environment.Robot;
 import ru.nsu.yattroman.textProcessing.FileReader;
 
 import java.util.*;
@@ -24,12 +27,13 @@ public class CommandHandler {
 
         argsCheckers.put(new String("coordinates"), new CoordinatesChecker());
         argsCheckers.put(new String("mapParameters"), new MapParametersChecker());
+        argsCheckers.put(new String("direction"), new DirectionChecker());
     }
 
-    public void executeNextCommand(){
+    public void executeNextCommand(Robot robot){
         commandAndArguments = reader.getSplitedTextLine();
         Command currentCommand = commandFactory.getInstance(commandAndArguments[0]);
-        currentCommand.execute(commandAndArguments, argsCheckers);
+        currentCommand.execute(commandAndArguments, argsCheckers, robot);
     }
 
 }

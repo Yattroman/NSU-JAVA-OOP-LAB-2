@@ -1,8 +1,8 @@
 package ru.nsu.yattroman.environment;
 
 public class Map {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     private char[][] mapHolder;
 
     public Map(int width, int height) {
@@ -13,7 +13,7 @@ public class Map {
 
         for (int i = 0; i < width; ++i) {
             for (int j = 0; j < height; ++j) {
-                mapHolder[i][j] = 0;
+                mapHolder[i][j] = '0';
             }
         }
     }

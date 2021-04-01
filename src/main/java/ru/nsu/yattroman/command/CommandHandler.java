@@ -1,6 +1,7 @@
 package ru.nsu.yattroman.command;
 
 import lombok.EqualsAndHashCode;
+import ru.nsu.yattroman.GameMaster;
 import ru.nsu.yattroman.command.checker.ArgsChecker;
 import ru.nsu.yattroman.command.checker.CoordinatesChecker;
 import ru.nsu.yattroman.command.checker.DirectionChecker;
@@ -30,10 +31,10 @@ public class CommandHandler {
         argsCheckers.put(new String("direction"), new DirectionChecker());
     }
 
-    public void executeNextCommand(Robot robot, Map map){
+    public void executeNextCommand(GameMaster gameMaster){
         commandAndArguments = reader.getSplitedTextLine();
         Command currentCommand = commandFactory.getInstance(commandAndArguments[0]);
-        currentCommand.execute(commandAndArguments, argsCheckers, robot, map);
+        currentCommand.execute(commandAndArguments, argsCheckers, gameMaster);
     }
 
 }

@@ -14,11 +14,11 @@ public class Move extends MovementCommand {
     }
 
     @Override
-    public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, Robot robot, Map map){
+    public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
         boolean check1 = argsCheckers.get("direction").check(args[1]);
 
         if(check1 && GameMaster.hasMapBeenInitialized){
-            robot.move(Direction.valueOf(args[1]));
+            gameMaster.getRobot().move(Direction.valueOf(args[1]));
 //            System.out.println(robot.getCoordinates()); CHECK COMMAND
         }
 

@@ -1,4 +1,4 @@
-package ru.nsu.yattroman.checker;
+package ru.nsu.yattroman.command.checker;
 
 public class DirectionChecker extends ArgsChecker{
     @Override

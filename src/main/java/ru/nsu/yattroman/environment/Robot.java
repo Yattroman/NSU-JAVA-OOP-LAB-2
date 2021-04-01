@@ -20,6 +20,11 @@ public class Robot {
             this.x = coordinates.x;
             this.y = coordinates.y;
         }
+
+        @Override
+        public String toString(){
+            return "X coordinates: "+ x + ". Y coordinates: " + y;
+        }
     }
 
     public Robot(Coordinates rCoordinates){
@@ -31,7 +36,8 @@ public class Robot {
     }
 
     public boolean canMove(Coordinates coordinates){
-        return (coordinates.x >= 0 && coordinates.y >= 0 && coordinates.x < GameMaster.currentMapWidth && coordinates.y < GameMaster.currentMapHeight);
+        return (coordinates.x >= 0 && coordinates.y >= 0
+                && coordinates.x < GameMaster.currentMapWidth && coordinates.y < GameMaster.currentMapHeight);
     }
 
     public void teleport(Coordinates coordinates){
@@ -56,11 +62,20 @@ public class Robot {
         }
     }
 
-    public void turnOnPainter(){
+    public void setNewCoordinates(Coordinates newCoordinates){
+        currentCoordinates.x = newCoordinates.x;
+        currentCoordinates.y = newCoordinates.y;
+    }
 
+    public void turnOnPainter(){
+        painterState = true;
     }
 
     public void turnOffPainter(){
+        painterState = false;
+    }
 
+    public boolean getPainterState(){
+        return painterState;
     }
 }

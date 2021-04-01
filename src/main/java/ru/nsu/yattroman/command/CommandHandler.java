@@ -14,11 +14,11 @@ import java.util.*;
 
 @EqualsAndHashCode
 public class CommandHandler {
-    CommandFactory commandFactory;
-    String playFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab2\\src\\main\\resources\\test.txt";
-    HashMap<String ,ArgsChecker> argsCheckers = new HashMap<>();
+    final private CommandFactory commandFactory;
+    final private String playFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab2\\src\\main\\resources\\test.txt";
+    final private HashMap<String ,ArgsChecker> argsCheckers = new HashMap<>();
 
-    FileReader reader;
+    final FileReader reader;
     String[] commandAndArguments;
 
     public CommandHandler(){

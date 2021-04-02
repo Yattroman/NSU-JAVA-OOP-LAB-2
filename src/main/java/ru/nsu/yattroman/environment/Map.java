@@ -1,6 +1,7 @@
 package ru.nsu.yattroman.environment;
 
 public class Map {
+
     private final int width;
     private final int height;
     private char[][] mapHolder;
@@ -18,12 +19,19 @@ public class Map {
         }
     }
 
-    public void showMap(){
-        for (int i = 0; i < width; ++i) {
-            for (int j = 0; j < height; ++j) {
-                System.out.print(mapHolder[i][j] + " ");
-            }
-            System.out.println();
-        }
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public char[][] getMapHolder(){
+        return mapHolder;
+    }
+
+    public void setCell(Robot.Coordinates coordinates, char cell){
+        mapHolder[coordinates.getY()][coordinates.getX()] = cell;
     }
 }

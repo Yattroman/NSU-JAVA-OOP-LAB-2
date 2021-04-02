@@ -25,6 +25,14 @@ public class Robot {
         public String toString(){
             return "X coordinates: "+ x + ". Y coordinates: " + y;
         }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
     }
 
     public Robot(Coordinates rCoordinates){

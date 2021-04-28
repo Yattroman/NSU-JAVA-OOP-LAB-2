@@ -16,7 +16,13 @@ public class Teleport extends MovementCommand {
         if(check1 && GameMaster.hasMapBeenInitialized){
             int x = Integer.parseInt(args[1]);
             int y = Integer.parseInt(args[2]);
+
+            Robot robot = gameMaster.getMap().getRobot();
+            gameMaster.getMap().setCell(robot.getCoordinates(), '0');
+
             gameMaster.getMap().getRobot().teleport(new Robot.Coordinates(x, y));
+
+            gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
 //            System.out.println(robot.getCoordinates()); CHECK COMMAND
         }
     }

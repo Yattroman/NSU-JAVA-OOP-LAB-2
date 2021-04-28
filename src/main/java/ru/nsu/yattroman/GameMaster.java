@@ -9,7 +9,6 @@ import ru.nsu.yattroman.view.ConsoleView;
 @Getter
 public class GameMaster {
     private final CommandHandler commandHandler;
-    private Robot robot;
     private Map map;
     private ConsoleView consoleView;
 
@@ -17,18 +16,9 @@ public class GameMaster {
     public static int currentMapHeight;
     public static boolean hasMapBeenInitialized = false;
 
-    public Robot getRobot() {
-        return robot;
-    }
-
     public Map getMap() {
         return map;
     }
-
-    public void setRobot(Robot robot) {
-        this.robot = robot;
-    }
-
     public void setMap(Map map) {
         this.map = map;
     }
@@ -36,13 +26,17 @@ public class GameMaster {
     public GameMaster(){
         commandHandler = new CommandHandler();
         consoleView = new ConsoleView();
-        robot = null;
         map = null;
     }
 
-    public void playGame(){
-        commandHandler.executeNextCommand(this);
+    public boolean playGame(){
+        boolean commandExecuted = commandHandler.executeNextCommand(this);
+        if(!commandExecuted){
+            return false;
+        }
         consoleView.showMap(this);
+
+        return true;
     }
 
 }

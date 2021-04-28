@@ -11,7 +11,7 @@ public class Ward extends DrawSkillCommand{
 
     @Override
     public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
-        gameMaster.getRobot().turnOffPainter();
+        gameMaster.getMap().getRobot().turnOffPainter();
 //        System.out.println(gameMaster.getRobot().getPainterState());
     }
 

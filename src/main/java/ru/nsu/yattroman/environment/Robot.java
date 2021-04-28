@@ -6,6 +6,7 @@ import ru.nsu.yattroman.command.Move;
 public class Robot {
     private Coordinates currentCoordinates;
     private boolean painterState;
+    private final Map map;
 
     public static class Coordinates{
         private int x;
@@ -35,8 +36,10 @@ public class Robot {
         }
     }
 
-    public Robot(Coordinates rCoordinates){
+    public Robot(Coordinates rCoordinates, Map map){
         this.currentCoordinates = rCoordinates;
+        this.painterState = false;
+        this.map = map;
     }
 
     public Coordinates getCoordinates(){
@@ -45,7 +48,7 @@ public class Robot {
 
     public boolean canMove(Coordinates coordinates){
         return (coordinates.x >= 0 && coordinates.y >= 0
-                && coordinates.x < GameMaster.currentMapWidth && coordinates.y < GameMaster.currentMapHeight);
+                && coordinates.x < map.getWidth() && coordinates.y < map.getHeight());
     }
 
     public void teleport(Coordinates coordinates){
@@ -58,10 +61,10 @@ public class Robot {
     public void move(Move.Direction direction){
         Coordinates tempCooridnates = new Coordinates(currentCoordinates);
         switch (direction){
-            case L -> tempCooridnates.x = currentCoordinates.x - 1;
-            case R -> tempCooridnates.x = currentCoordinates.x + 1;
-            case U -> tempCooridnates.y = currentCoordinates.y + 1;
-            case D -> tempCooridnates.y = currentCoordinates.y - 1;
+            case L -> tempCooridnates.x = (currentCoordinates.x - 1) % map.getWidth();
+            case R -> tempCooridnates.x = (currentCoordinates.x + 1) % map.getWidth();
+            case U -> tempCooridnates.y = (currentCoordinates.y + 1) % map.getHeight();
+            case D -> tempCooridnates.y = (currentCoordinates.y - 1) % map.getHeight();
         }
 
         if(canMove(tempCooridnates)){

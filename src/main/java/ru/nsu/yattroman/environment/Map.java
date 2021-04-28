@@ -5,10 +5,12 @@ public class Map {
     private final int width;
     private final int height;
     private char[][] mapHolder;
+    private Robot robot;
 
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
+        this.robot = null;
 
         this.mapHolder = new char[width][height];
 
@@ -17,6 +19,13 @@ public class Map {
                 mapHolder[i][j] = '0';
             }
         }
+    }
+
+    public Robot getRobot() {
+        return robot;
+    }
+    public void setRobot(Robot robot) {
+        this.robot = robot;
     }
 
     public int getWidth() {

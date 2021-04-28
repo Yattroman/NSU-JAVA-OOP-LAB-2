@@ -11,7 +11,7 @@ public class Draw extends DrawSkillCommand {
 
     @Override
     public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
-        gameMaster.getRobot().turnOnPainter();
+        gameMaster.getMap().getRobot().turnOnPainter();
 //        System.out.println(gameMaster.getRobot().getPainterState());
     }
 

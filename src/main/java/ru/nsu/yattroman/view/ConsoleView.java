@@ -11,5 +11,6 @@ public class ConsoleView {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }

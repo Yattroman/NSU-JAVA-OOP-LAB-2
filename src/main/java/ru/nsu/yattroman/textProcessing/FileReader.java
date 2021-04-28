@@ -36,6 +36,8 @@ public class FileReader {
         try
         {
             line = buffReader.readLine();
+            if(line == null)
+                return null;
             splitedTextLine = line.split(delimeter);
         }
         catch (IOException e)

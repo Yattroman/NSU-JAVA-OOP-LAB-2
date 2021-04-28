@@ -26,8 +26,8 @@ public class Init extends FundamentalCommand {
                 int x = Integer.parseInt(args[3]);
                 int y = Integer.parseInt(args[4]);
 
-                gameMaster.setRobot(new Robot(new Robot.Coordinates(x, y)));
-                gameMaster.getMap().setCell(gameMaster.getRobot().getCoordinates(), 'R');
+                gameMaster.getMap().setRobot(new Robot(new Robot.Coordinates(x, y), gameMaster.getMap()));
+                gameMaster.getMap().setCell(gameMaster.getMap().getRobot().getCoordinates(), 'R');
 
 //                System.out.println(robot.getCoordinates()); CHECK COMMAND
 //                System.out.println("Height: " + GameMaster.currentMapHeight + ". Width: " + GameMaster.currentMapWidth); CHECK COMMAND

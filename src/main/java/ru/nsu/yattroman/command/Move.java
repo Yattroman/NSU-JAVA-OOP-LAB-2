@@ -18,7 +18,16 @@ public class Move extends MovementCommand {
         boolean check1 = argsCheckers.get("direction").check(args[1]);
 
         if(check1 && GameMaster.hasMapBeenInitialized){
-            gameMaster.getRobot().move(Direction.valueOf(args[1]));
+            Robot robot = gameMaster.getMap().getRobot();
+
+            if(robot.getPainterState())
+                gameMaster.getMap().setCell(robot.getCoordinates(), '.');
+            else
+                gameMaster.getMap().setCell(robot.getCoordinates(), '0');
+
+            robot.move(Direction.valueOf(args[1]));
+
+            gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
 //            System.out.println(robot.getCoordinates()); CHECK COMMAND
         }
 

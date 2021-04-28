@@ -17,7 +17,7 @@ import java.util.*;
 public class CommandHandler {
     final private CommandFactory commandFactory;
     final private String playFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab2\\src\\main\\resources\\test.txt";
-    final private HashMap<String ,ArgsChecker> argsCheckers = new HashMap<>();
+    final private HashMap<String, ArgsChecker> argsCheckers = new HashMap<>();
 
     final FileReader reader;
     String[] commandAndArguments;
@@ -31,10 +31,14 @@ public class CommandHandler {
         argsCheckers.put(new String("direction"), new DirectionChecker());
     }
 
-    public void executeNextCommand(GameMaster gameMaster){
+    public boolean executeNextCommand(GameMaster gameMaster){
         commandAndArguments = reader.getSplitedTextLine();
+        if(commandAndArguments == null)
+            return false;
         Command currentCommand = commandFactory.getInstance(commandAndArguments[0]);
         currentCommand.execute(commandAndArguments, argsCheckers, gameMaster);
+
+        return true;
     }
 
 }

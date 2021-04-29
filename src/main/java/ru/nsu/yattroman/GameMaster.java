@@ -13,6 +13,7 @@ public class GameMaster {
 
     public static int currentMapWidth;
     public static int currentMapHeight;
+
     public static boolean hasMapBeenInitialized = false;
 
     public Map getMap() {

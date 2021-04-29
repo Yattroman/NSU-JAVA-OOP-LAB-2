@@ -19,16 +19,20 @@ public class Move extends MovementCommand {
     @Override
     public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
         boolean check1 = argsCheckers.get("direction").check(args[1]);
+        boolean check2 = argsCheckers.get("steps").check(args[2]);
 
-        if(check1 && GameMaster.hasMapBeenInitialized){
+        if(check1 && check2 && GameMaster.hasMapBeenInitialized){
             Robot robot = gameMaster.getMap().getRobot();
+            int stepsCount = Integer.parseInt(args[2]);
 
-            if(robot.getPainterState())
-                gameMaster.getMap().setCell(robot.getCoordinates(), '.');
-            else
-                gameMaster.getMap().setCell(robot.getCoordinates(), '0');
+            for (int i = 0; i < stepsCount; i++) {
+                if(robot.getPainterState())
+                    gameMaster.getMap().setCell(robot.getCoordinates(), '.');
+                else
+                    gameMaster.getMap().setCell(robot.getCoordinates(), '0');
 
-            robot.move(Direction.valueOf(args[1]));
+                robot.move(Direction.valueOf(args[1]));
+            }
 
             gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
 //            System.out.println(robot.getCoordinates()); CHECK COMMAND

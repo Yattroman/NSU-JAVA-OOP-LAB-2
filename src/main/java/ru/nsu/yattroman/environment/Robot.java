@@ -65,6 +65,15 @@ public class Robot {
         }
     }
 
+    public int getCalculatedCoordinate(int currentCoordinate, int addition, int maxparam){
+        if(currentCoordinate == 0 && addition == -1) {
+            currentCoordinate = maxparam - 1;
+        } else {
+            currentCoordinate = (currentCoordinate + addition) % maxparam;
+        }
+
+        return currentCoordinate;
+    }
     /**
      * Метод робота move, меняет координаты робота в соответствии с заданными параметами
      * Координаты меняются, будто бы карта - тороидальное поле
@@ -73,10 +82,10 @@ public class Robot {
     public void move(Move.Direction direction){
         Coordinates tempCooridnates = new Coordinates(currentCoordinates);
         switch (direction){
-            case L -> tempCooridnates.x = (currentCoordinates.x - 1) % map.getWidth();
-            case R -> tempCooridnates.x = (currentCoordinates.x + 1) % map.getWidth();
-            case U -> tempCooridnates.y = (currentCoordinates.y + 1) % map.getHeight();
-            case D -> tempCooridnates.y = (currentCoordinates.y - 1) % map.getHeight();
+            case R -> tempCooridnates.x = getCalculatedCoordinate(currentCoordinates.x , 1, map.getWidth());
+            case L -> tempCooridnates.x = getCalculatedCoordinate(currentCoordinates.x , -1, map.getWidth());
+            case D -> tempCooridnates.y = getCalculatedCoordinate(currentCoordinates.y , 1, map.getHeight());
+            case U -> tempCooridnates.y = getCalculatedCoordinate(currentCoordinates.y , -1, map.getHeight());
         }
 
         if(canMove(tempCooridnates)){

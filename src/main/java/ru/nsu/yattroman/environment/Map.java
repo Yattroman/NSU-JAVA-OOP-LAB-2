@@ -1,5 +1,8 @@
 package ru.nsu.yattroman.environment;
 
+/**
+ * Класс карты, с которой взаимодейтсвует робот
+ */
 public class Map {
 
     private final int width;

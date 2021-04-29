@@ -1,5 +1,8 @@
 package ru.nsu.yattroman.command.checker;
 
+/**
+ * Класс-наследник "проверяльщика аргументов", проверяет направления движения на валидность
+ */
 public class DirectionChecker extends ArgsChecker{
     @Override
     public boolean check(String... args){

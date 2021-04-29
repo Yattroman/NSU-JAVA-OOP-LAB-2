@@ -7,6 +7,9 @@ import ru.nsu.yattroman.environment.Robot;
 
 import java.util.HashMap;
 
+/**
+ * Класс команды INIT <width> <height> <x> <y>
+ */
 public class Init extends FundamentalCommand {
 
     @Override

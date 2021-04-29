@@ -5,6 +5,9 @@ import ru.nsu.yattroman.command.checker.ArgsChecker;
 
 import java.util.HashMap;
 
+/**
+ * Класс команды WARD
+ */
 public class Ward extends DrawSkillCommand{
 
     @Override

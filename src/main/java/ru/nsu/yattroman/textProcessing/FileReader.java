@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Класс FileReader, предназанчен для работы с файлами
+ */
 public class FileReader {
 
     private BufferedReader buffReader;
@@ -29,6 +32,10 @@ public class FileReader {
         }
     }
 
+    /**
+     * Считывает строку с помощью BufferedReader, если всё прошло успешно, то затем разбивает её на массив подстрок
+     * @return
+     */
     public String[] getSplitedTextLine(){
         String delimeter = " ";
         String[] splitedTextLine = null;

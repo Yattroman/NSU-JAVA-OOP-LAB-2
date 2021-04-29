@@ -7,6 +7,9 @@ import ru.nsu.yattroman.environment.Robot;
 
 import java.util.HashMap;
 
+/**
+ * Класс команды TELEPORT
+ */
 public class Teleport extends MovementCommand {
 
     @Override
@@ -23,7 +26,6 @@ public class Teleport extends MovementCommand {
             gameMaster.getMap().getRobot().teleport(new Robot.Coordinates(x, y));
 
             gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
-//            System.out.println(robot.getCoordinates()); CHECK COMMAND
         }
     }
 }

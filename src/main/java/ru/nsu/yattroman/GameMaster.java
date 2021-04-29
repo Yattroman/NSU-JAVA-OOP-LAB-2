@@ -3,7 +3,6 @@ package ru.nsu.yattroman;
 import lombok.Getter;
 import ru.nsu.yattroman.command.CommandHandler;
 import ru.nsu.yattroman.environment.Map;
-import ru.nsu.yattroman.environment.Robot;
 import ru.nsu.yattroman.view.ConsoleView;
 
 @Getter
@@ -29,6 +28,11 @@ public class GameMaster {
         map = null;
     }
 
+    /**
+     * Основная функция программы, исполняет комманды из файла, одна за другой.
+     * При этом получает статус выполнения команды, и если возникли проблемы с исполнением команды,
+     * то завершает false, в ином случае, когда всё хорошо - true.
+     **/
     public boolean playGame(){
         boolean commandExecuted = commandHandler.executeNextCommand(this);
         if(!commandExecuted){

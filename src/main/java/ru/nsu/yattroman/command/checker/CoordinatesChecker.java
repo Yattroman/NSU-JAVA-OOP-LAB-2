@@ -2,6 +2,9 @@ package ru.nsu.yattroman.command.checker;
 
 import ru.nsu.yattroman.GameMaster;
 
+/**
+ * Класс-наследник "проверяльщика аргументов", проверяет координаты на валидность
+ */
 public class CoordinatesChecker extends ArgsChecker{
     @Override
     public boolean check(String... args){

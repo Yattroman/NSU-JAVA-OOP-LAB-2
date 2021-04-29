@@ -1,8 +1,10 @@
 package ru.nsu.yattroman.environment;
 
-import ru.nsu.yattroman.GameMaster;
 import ru.nsu.yattroman.command.Move;
 
+/**
+ * Класс робота
+ */
 public class Robot {
     private Coordinates currentCoordinates;
     private boolean painterState;
@@ -46,6 +48,11 @@ public class Robot {
         return currentCoordinates;
     }
 
+    /**
+     * Проверяет координаты
+     * @param coordinates
+     * @return
+     */
     public boolean canMove(Coordinates coordinates){
         return (coordinates.x >= 0 && coordinates.y >= 0
                 && coordinates.x < map.getWidth() && coordinates.y < map.getHeight());
@@ -58,6 +65,11 @@ public class Robot {
         }
     }
 
+    /**
+     * Метод робота move, меняет координаты робота в соответствии с заданными параметами
+     * Координаты меняются, будто бы карта - тороидальное поле
+     * @param direction
+     */
     public void move(Move.Direction direction){
         Coordinates tempCooridnates = new Coordinates(currentCoordinates);
         switch (direction){

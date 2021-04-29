@@ -7,6 +7,9 @@ import ru.nsu.yattroman.environment.Robot;
 
 import java.util.HashMap;
 
+/**
+ * Класс команды MOVE [L|R|U|D] <steps>
+ */
 public class Move extends MovementCommand {
 
     public enum Direction {

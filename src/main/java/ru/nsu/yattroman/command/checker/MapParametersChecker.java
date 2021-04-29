@@ -1,5 +1,8 @@
 package ru.nsu.yattroman.command.checker;
 
+/**
+ * Класс-наследник "проверяльщика аргументов", проверяет параметры карты на валидность
+ */
 public class MapParametersChecker extends ArgsChecker{
     @Override
     public boolean check(String... args){

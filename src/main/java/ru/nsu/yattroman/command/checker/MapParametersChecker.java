@@ -1,5 +1,7 @@
 package ru.nsu.yattroman.command.checker;
 
+import ru.nsu.yattroman.GameMaster;
+
 /**
  * Класс-наследник "проверяльщика аргументов", проверяет параметры карты на валидность
  */
@@ -11,6 +13,7 @@ public class MapParametersChecker extends ArgsChecker{
         int heigth = Integer.parseInt(args[1]);
 
         if (width < 0 || heigth < 0){
+            GameMaster.logger.error("Invalid map parameters!");
             return false;
         }
 

@@ -13,7 +13,8 @@ public class CoordinatesChecker extends ArgsChecker{
         int y = Integer.parseInt(args[1]);
 
         if(x < 0 || y < 0 || x >= GameMaster.currentMapWidth || y >= GameMaster.currentMapHeight){
-            return false; // В идеале должно быть исключение
+            GameMaster.logger.error("Invalid coordinates");
+            return false;
         }
 
         return true;

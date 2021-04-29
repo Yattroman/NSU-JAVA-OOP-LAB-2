@@ -1,5 +1,6 @@
 package ru.nsu.yattroman.environment;
 
+import ru.nsu.yattroman.GameMaster;
 import ru.nsu.yattroman.command.Move;
 
 /**
@@ -62,6 +63,7 @@ public class Robot {
         if(canMove(coordinates)){
             currentCoordinates.x = coordinates.x;
             currentCoordinates.y = coordinates.y;
+            GameMaster.logger.trace("Robot has been teleported.");
         }
     }
 
@@ -91,6 +93,7 @@ public class Robot {
         if(canMove(tempCooridnates)){
             currentCoordinates.x = tempCooridnates.x;
             currentCoordinates.y = tempCooridnates.y;
+            GameMaster.logger.trace("Robot has been moved.");
         }
     }
 
@@ -100,10 +103,12 @@ public class Robot {
     }
 
     public void turnOnPainter(){
+        GameMaster.logger.trace("Painter turned on.");
         painterState = true;
     }
 
     public void turnOffPainter(){
+        GameMaster.logger.trace("Painter turned off.");
         painterState = false;
     }
 

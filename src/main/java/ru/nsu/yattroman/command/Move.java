@@ -35,8 +35,10 @@ public class Move extends MovementCommand {
             }
 
             gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
-//            System.out.println(robot.getCoordinates()); CHECK COMMAND
         }
+
+        if (!GameMaster.hasMapBeenInitialized)
+            GameMaster.logger.error("Map hasn't been initialized");
 
     }
 }

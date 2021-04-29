@@ -12,7 +12,10 @@ public class Ward extends DrawSkillCommand{
 
     @Override
     public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
-        gameMaster.getMap().getRobot().turnOffPainter();
+        if (GameMaster.hasMapBeenInitialized)
+            gameMaster.getMap().getRobot().turnOffPainter();
+        else
+            GameMaster.logger.error("Map hasn't been initialized");
     }
 
 }

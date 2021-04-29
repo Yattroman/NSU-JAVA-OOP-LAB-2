@@ -27,5 +27,8 @@ public class Teleport extends MovementCommand {
 
             gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
         }
+
+        if (!GameMaster.hasMapBeenInitialized)
+            GameMaster.logger.error("Map hasn't been initialized");
     }
 }

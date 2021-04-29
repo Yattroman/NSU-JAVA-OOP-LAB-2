@@ -12,7 +12,11 @@ public class Draw extends DrawSkillCommand {
 
     @Override
     public void execute(String[] args, HashMap<String ,ArgsChecker> argsCheckers, GameMaster gameMaster){
-        gameMaster.getMap().getRobot().turnOnPainter();
+        if (GameMaster.hasMapBeenInitialized)
+            gameMaster.getMap().getRobot().turnOnPainter();
+        else
+            GameMaster.logger.error("Map hasn't been initialized");
+
     }
 
 }

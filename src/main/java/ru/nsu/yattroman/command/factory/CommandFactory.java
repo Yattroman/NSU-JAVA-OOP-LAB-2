@@ -34,12 +34,12 @@ public class CommandFactory {
         try {
             Class<? extends Command> commandClass = commandClasses.get(commandName);
             if(commandClass == null){
-                throw new RuntimeException("No class registered with name " + commandName);
+                throw new RuntimeException("-> No class registered with name " + commandName);
             }
             Constructor<? extends Command> commandConstr = commandClass.getConstructor();
             command = commandConstr.newInstance();
         } catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return command;

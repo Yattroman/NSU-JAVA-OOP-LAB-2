@@ -4,6 +4,8 @@ import ru.nsu.yattroman.GameMaster;
 import ru.nsu.yattroman.command.checker.ArgsChecker;
 import ru.nsu.yattroman.environment.Map;
 import ru.nsu.yattroman.environment.Robot;
+import ru.nsu.yattroman.exceptions.InvalidCommandArgException;
+import ru.nsu.yattroman.exceptions.MapHasntBeenInitializedException;
 
 import java.util.HashMap;
 
@@ -21,24 +23,26 @@ public class Move extends MovementCommand {
         boolean check1 = argsCheckers.get("direction").check(args[1]);
         boolean check2 = argsCheckers.get("steps").check(args[2]);
 
-        if(check1 && check2 && GameMaster.hasMapBeenInitialized){
-            Robot robot = gameMaster.getMap().getRobot();
-            int stepsCount = Integer.parseInt(args[2]);
-
-            for (int i = 0; i < stepsCount; i++) {
-                if(robot.getPainterState())
-                    gameMaster.getMap().setCell(robot.getCoordinates(), '.');
-                else
-                    gameMaster.getMap().setCell(robot.getCoordinates(), '0');
-
-                robot.move(Direction.valueOf(args[1]));
-            }
-
-            gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
+        if(!GameMaster.hasMapBeenInitialized) {
+            GameMaster.logger.error("Map hasn't been initialized");
+            throw new MapHasntBeenInitializedException();
         }
 
-        if (!GameMaster.hasMapBeenInitialized)
-            GameMaster.logger.error("Map hasn't been initialized");
+        if(!check1 || !check2)
+            throw new InvalidCommandArgException("-> Move command arguments are invalid. Rewrite arguments.");
 
+        Robot robot = gameMaster.getMap().getRobot();
+        int stepsCount = Integer.parseInt(args[2]);
+
+        for (int i = 0; i < stepsCount; i++) {
+            if(robot.getPainterState())
+                gameMaster.getMap().setCell(robot.getCoordinates(), '.');
+            else
+                gameMaster.getMap().setCell(robot.getCoordinates(), '0');
+
+            robot.move(Direction.valueOf(args[1]));
+        }
+
+        gameMaster.getMap().setCell(robot.getCoordinates(), 'R');
     }
 }

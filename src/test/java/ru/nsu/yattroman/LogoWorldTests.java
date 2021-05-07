@@ -117,6 +117,13 @@ public class LogoWorldTests {
         String[] commandAndArgs5 = {"MOVE", "L", "8"};
         currentCommand.execute(commandAndArgs5, ch.getArgsCheckers(), gm);
         assertEquals(9, gm.getMap().getRobot().getCoordinates().getX());
+
+        String[] commandAndArgs6 = {"MOVE", "U", "-1000"};
+
+        Exception exception2 = assertThrows(RuntimeException.class,
+                () -> currentCommand.execute(commandAndArgs6, ch.getArgsCheckers(), gm) );
+
+        assertEquals("-> Move command arguments are invalid. Rewrite arguments.", exception2.getMessage());
     }
 
     @Test
